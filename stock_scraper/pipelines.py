@@ -14,7 +14,7 @@ log = logging.getLogger(__name__)
 class StockScraperPipeline(object):
     
     def __init__(self):    
-        self.db = MySQLdb.connect('localhost', 'StockUser', '', 'StockDB', charset="utf8", use_unicode=True)
+        self.db = MySQLdb.connect('localhost', 'StockUser', 'StockPass', 'StockDB', charset="utf8", use_unicode=True)
         log.info("Connected to DB")
         # Cursor will used in executing SQL query
         self.cursor = self.db.cursor()

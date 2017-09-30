@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d70fe848-263c-4bed-b3e9-2fcc16b30167" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stock_scraper/pipelines.py" afterPath="$PROJECT_DIR$/stock_scraper/pipelines.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/stock_scraper/pipelines.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="16" column="61" lean-forward="false" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="61" />
+              <caret line="16" column="70" lean-forward="false" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -187,7 +187,7 @@
     <entry file="file://$PROJECT_DIR$/stock_scraper/pipelines.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="16" column="61" lean-forward="false" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="61" />
+          <caret line="16" column="70" lean-forward="false" selection-start-line="16" selection-start-column="61" selection-end-line="16" selection-end-column="70" />
           <folding />
         </state>
       </provider>
