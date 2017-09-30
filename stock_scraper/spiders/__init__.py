@@ -1,0 +1,2 @@
+from stock_scraper.spiders.SpotValueSpider import SpotValueSpider
+from stock_scraper.spiders.StockOptionSpider import StockOptionSpider
