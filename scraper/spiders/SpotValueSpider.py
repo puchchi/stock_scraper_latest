@@ -16,13 +16,13 @@ from scraper.items import StockSpotItem
 # start logger
 log = logging.getLogger(__name__)
 
-class SpotValueSpider(scrapy.Spider):
+class kSpotValueSpider(scrapy.Spider):
     
-    name = 'SpotValueSpider'
+    name = 'kSpotValueSpider'
     allowed_domains = ['www.nseindia.com']
     
     def __init__(self, symbol, startYear, endYear, * args, **kwargs):
-        super(SpotValueSpider, self).__init__(*args, **kwargs)
+        super(kSpotValueSpider, self).__init__(*args, **kwargs)
         self.symbol = symbol
         #this list will store day range with month range in the form of [[[start day,end day],[start month,end month]]]
         self.dayMonthRange=[[['01','31'],['01','03']],[['01','30'],['04','06']],[['01','30'],['07','09']],[['01','31'],['10','12']]]

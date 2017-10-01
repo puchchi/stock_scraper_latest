@@ -11,13 +11,13 @@ from scrapy.loader.processors import Join, MapCompose
 # start logger
 log = logging.getLogger(__name__)
 
-class StockOptionSpider(scrapy.Spider):
+class kStockOptionSpider(scrapy.Spider):
     
-    name = 'StockOptionSpider'
+    name = 'kStockOptionSpider'
     allowed_domains = ['www.nseindia.com']
     
     def __init__(self, symbol, startYear, endYear, * args, **kwargs):
-        super(StockOptionSpider, self).__init__(*args, **kwargs)
+        super(kStockOptionSpider, self).__init__(*args, **kwargs)
         self.symbol = symbol
         self.startYear = startYear
         self.endYear = endYear
