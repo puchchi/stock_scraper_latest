@@ -15,7 +15,7 @@ SPIDER_MODULES = ['scraper.spiders']
 NEWSPIDER_MODULE = 'scraper.spiders'
 
 ITEM_PIPELINES = {
-                  'scraper.pipelines.StockScraperPipeline':300
+                  'scraper.pipelines.kStockScraperPipeline':300
                   }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

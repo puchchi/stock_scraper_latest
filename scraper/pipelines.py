@@ -14,7 +14,7 @@ import logging
 # start logger
 log = logging.getLogger(__name__)
 
-class StockScraperPipeline(object):
+class kStockScraperPipeline(object):
     
     def __init__(self):    
         self.db = MySQLdb.connect('localhost', 'StockUser', 'StockPass', 'StockDB', charset="utf8", use_unicode=True)
