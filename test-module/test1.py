@@ -1,8 +1,11 @@
+import sys
+from os import path
+sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
 from scraper import utility
 import logging
-import stock_scraper
+#import stock_scraper
 
-logging.basicConfig(filename='/root/stock_scraper/stock_scraper.log',filemode='a',format='%(asctime)-15s : %(module)s : %(levelname)s : %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.DEBUG)
+#logging.basicConfig(filename='/root/stock_scraper/stock_scraper.log',filemode='a',format='%(asctime)-15s : %(module)s : %(levelname)s : %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 

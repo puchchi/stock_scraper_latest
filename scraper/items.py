@@ -4,7 +4,7 @@
 
 from scrapy import Item, Field
 from scrapy.loader.processors import MapCompose, Join
-from stock_scraper import utility
+from scraper import utility
 
 
 class StockOptionItem(Item):

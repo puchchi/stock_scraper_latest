@@ -69,7 +69,7 @@ def expiryEncoding(data):
 
 
 def getSpotValue(date):
-    mysql = MySQLdb.connect('localhost', 'StockUser', 'iluvnvya', 'StockDB', charset="utf8", use_unicode=True)
+    mysql = MySQLdb.connect('localhost', 'StockUser', 'StockPass', 'StockDB', charset="utf8", use_unicode=True)
     cursor = mysql.cursor()
     SQL = """
         select Close from SpotValueOfNifty50 where Date= %s;

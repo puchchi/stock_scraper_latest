@@ -4,11 +4,14 @@
     & ENDDATE as argument to this spider.
 '''
 
-import scrapy, logging, stock_scraper
+import sys
+from os import path
+sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
+import scrapy, logging, scraper
 from scrapy.loader import ItemLoader
 from scrapy.selector import Selector
 from scrapy.loader.processors import Join, MapCompose
-from stock_scraper import StockSpotItem
+from scraper.items import StockSpotItem
 
 # start logger
 log = logging.getLogger(__name__)

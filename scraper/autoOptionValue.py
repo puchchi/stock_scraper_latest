@@ -5,8 +5,11 @@
     getting banned.
 '''
 
-import scrapy, stock_scraper, logging
-from stock_scraper.spiders import StockOptionSpider
+import sys
+from os import path
+sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
+import scrapy, scraper, logging
+from scraper.spiders import StockOptionSpider
 from scrapy.crawler import CrawlerProcess
 from scrapy.utils.project import get_project_settings
 

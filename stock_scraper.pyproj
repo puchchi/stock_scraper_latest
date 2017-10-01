@@ -5,8 +5,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{084aa35a-8739-4030-aea8-2af3185fda11}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>test-module\test1.py</StartupFile>
-    <SearchPath />
+    <StartupFile>scraper\autoSpotValue.py</StartupFile>
+    <SearchPath>scraper\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
@@ -21,28 +21,64 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="package1\module1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="package2\module2.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="package2\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="package1\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="stock_scraper\autoOptionValue.py" />
-    <Compile Include="stock_scraper\autoSpotValue.py" />
-    <Compile Include="stock_scraper\items.py" />
-    <Compile Include="stock_scraper\pipelines.py" />
-    <Compile Include="stock_scraper\settings.py" />
-    <Compile Include="stock_scraper\spiders\SpotValueSpider.py" />
-    <Compile Include="stock_scraper\spiders\StockOptionSpider.py" />
-    <Compile Include="stock_scraper\spiders\__init__.py" />
-    <Compile Include="stock_scraper\utility.py" />
-    <Compile Include="stock_scraper\__init__.py" />
-    <Compile Include="test-module\test1.py" />
-    <Compile Include="test-module\__init__.py" />
-    <Compile Include="test-module\test.py" />
+    <Compile Include="scraper\autoOptionValue.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\autoSpotValue.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\items.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\pipelines.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\settings.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\spiders\SpotValueSpider.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\spiders\StockOptionSpider.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\spiders\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\utility.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test-module\test1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test-module\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="test-module\test.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="package1\" />
-    <Folder Include="stock_scraper\" />
-    <Folder Include="stock_scraper\spiders" />
-    <Folder Include="test-module" />
+    <Folder Include="package2\" />
+    <Folder Include="scraper\" />
+    <Folder Include="scraper\spiders\" />
+    <Folder Include="test-module\" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />

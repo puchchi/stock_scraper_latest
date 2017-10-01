@@ -9,13 +9,13 @@
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'stock_scraper'
+BOT_NAME = 'scraper'
 
-SPIDER_MODULES = ['stock_scraper.spiders']
-NEWSPIDER_MODULE = 'stock_scraper.spiders'
+SPIDER_MODULES = ['scraper.spiders']
+NEWSPIDER_MODULE = 'scraper.spiders'
 
 ITEM_PIPELINES = {
-                  'stock_scraper.pipelines.StockScraperPipeline':300
+                  'scraper.pipelines.StockScraperPipeline':300
                   }
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent

@@ -1,8 +1,11 @@
-import scrapy, stock_scraper.spiders, stock_scraper, logging
+import sys
+from os import path
+sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
+import scrapy, scraper.spiders, logging
 from scrapy.selector import Selector
 from scrapy.loader import ItemLoader
-from stock_scraper import utility
-from stock_scraper.items import StockOptionItem
+from scraper import utility
+from scraper.items import StockOptionItem
 from scrapy.loader.processors import Join, MapCompose
 
 # start logger
