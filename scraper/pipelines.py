@@ -31,7 +31,7 @@ class kStockScraperPipeline(object):
     def process_item(self, item, spider):
         
         # StockOptionSpider pipeline
-        if spider.name == 'StockOptionSpider':
+        if spider.name == 'kStockOptionSpider':
             # to get year from expiry date e.g 02022014CE7500 to 2014
             year = item['Expiry'][4:8]
             tableName = 'NiftyOption%s' % year
@@ -56,7 +56,7 @@ class kStockScraperPipeline(object):
             
         ###########################################################################################    
         # SpotValueSpider' pipeline
-        elif spider.name == 'SpotValueSpider':
+        elif spider.name == 'kSpotValueSpider':
             SQL = """ 
                 INSERT INTO SpotValueOfNifty( Date,Open,High,Low,Close,SharesTraded,Turnover)
                 VALUES (%s,%s,%s,%s,%s,%s,%s)
@@ -79,6 +79,7 @@ class kStockScraperPipeline(object):
                     # In case of error, there will be rollback ...
                     # If data is already present in table then there will be rollback 
                     self.db.rollback()
+                    print "DB Rollback error"
                     log.critical("DB_ROLLBACK_ERROR")
             return item
         return item
