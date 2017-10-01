@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{084aa35a-8739-4030-aea8-2af3185fda11}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>test-module\test.py</StartupFile>
+    <StartupFile>test-module\test1.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -21,6 +21,9 @@
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="package1\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="stock_scraper\autoOptionValue.py" />
     <Compile Include="stock_scraper\autoSpotValue.py" />
     <Compile Include="stock_scraper\items.py" />
@@ -36,7 +39,8 @@
     <Compile Include="test-module\test.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="stock_scraper" />
+    <Folder Include="package1\" />
+    <Folder Include="stock_scraper\" />
     <Folder Include="stock_scraper\spiders" />
     <Folder Include="test-module" />
   </ItemGroup>

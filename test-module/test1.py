@@ -1,5 +1,6 @@
-from stock_scraper import utility
+from scraper import utility
 import logging
+import stock_scraper
 
 logging.basicConfig(filename='/root/stock_scraper/stock_scraper.log',filemode='a',format='%(asctime)-15s : %(module)s : %(levelname)s : %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p', level=logging.DEBUG)
 log = logging.getLogger(__name__)
