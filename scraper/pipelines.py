@@ -3,8 +3,11 @@
     will check & parse & insert data in database
 '''
 
+import sys
+from os import path
+sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
 import MySQLdb
-import stock_scraper
+import scraper
 from scrapy.exceptions import DropItem
 import logging
 
