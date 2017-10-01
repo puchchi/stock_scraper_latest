@@ -6,8 +6,9 @@
 import sys
 from os import path
 sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
+
 import MySQLdb
-import scraper
+from scraper import utility
 from scrapy.exceptions import DropItem
 import logging
 
@@ -17,7 +18,8 @@ log = logging.getLogger(__name__)
 class kStockScraperPipeline(object):
     
     def __init__(self):    
-        self.db = MySQLdb.connect('localhost', 'StockUser', 'StockPass', 'StockDB', charset="utf8", use_unicode=True)
+        self.db = MySQLdb.connect(utility.databaseHost, utility.databaseUsername,
+						    utility.databasePassword, utility.databaseName, charset="utf8", use_unicode=True)
         log.info("Connected to DB")
         # Cursor will used in executing SQL query
         self.cursor = self.db.cursor()
@@ -56,7 +58,7 @@ class kStockScraperPipeline(object):
         # SpotValueSpider' pipeline
         elif spider.name == 'SpotValueSpider':
             SQL = """ 
-                INSERT INTO SpotValueOfNifty50( Date,Open,High,Low,Close,SharesTraded,Turnover)
+                INSERT INTO SpotValueOfNifty( Date,Open,High,Low,Close,SharesTraded,Turnover)
                 VALUES (%s,%s,%s,%s,%s,%s,%s)
             """ % (item['Date'].encode('utf-8'), item['Open'].encode('utf-8'), item['High'].encode('utf-8'),
                    item['Low'].encode('utf-8'), item['Close'].encode('utf-8'), item['SharesTraded'].encode('utf-8'),

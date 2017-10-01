@@ -2,6 +2,11 @@
 
 import MySQLdb
 
+databaseHost = "localhost"
+databaseName = "StockDB"
+databaseUsername = "StockUser"
+databasePassword = "StockPass"
+
 # this will define lower n upper range of option
 optionRange = 2500
 strikePriceGap = 50
