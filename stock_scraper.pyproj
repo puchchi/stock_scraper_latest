@@ -27,6 +27,12 @@
     <Compile Include="DBInitialize\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Indicators\AccumulationNDistributionLine.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Indicators\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="scraper\autoOptionValue.py">
       <SubType>Code</SubType>
     </Compile>
@@ -69,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DBInitialize\" />
+    <Folder Include="Indicators\" />
     <Folder Include="scraper\" />
     <Folder Include="scraper\spiders\" />
     <Folder Include="test-module\" />

@@ -21,7 +21,7 @@ process = CrawlerProcess(get_project_settings())
 
 
 # crawl will take Spider name with its *args
-process.crawl(SpotValueSpider.kSpotValueSpider, symbol='NIFTY 50', startYear=2015, endYear=2016)
+process.crawl(SpotValueSpider.kSpotValueSpider, symbol='NIFTY 50', startYear=2010, endYear=2017)
 # Everything is set to go and crawl.
 process.start()
     
