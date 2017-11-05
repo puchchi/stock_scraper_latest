@@ -36,10 +36,12 @@ indexExpiryDate = {2000:["29-06-2000", "27-07-2000", "31-08-2000", "28-09-2000",
                  2015:["29-01-2015", "26-02-2015", "26-03-2015", "30-04-2015", "28-05-2015", "25-06-2015", "30-07-2015", "27-08-2015", "24-09-2015", "29-10-2015", "26-11-2015", "31-12-2015"],
                  }
 
-# This will convert 12-Jan-2014 to 12012014
+# This will convert 12-Jan-2014 to 20140112(yyyymmdd)
 def dateEncoding(date):  # This function will convert date(string) to date(integer) format
     words = date.split('-')  # Spliting date using '-' as delimiter
-    return unicode(int(words[0] + monthToNumberHash[words[1]] + words[2])) 
+    #return unicode(int(words[0] + monthToNumberHash[words[1]] + words[2])) 
+    return unicode(int(words[2] + monthToNumberHash[words[1]] + words[0])) 
+
 
 # This will convert '7,500.00' to '7500.00'
 def strToFloatNumber(data):

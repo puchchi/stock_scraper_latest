@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{084aa35a-8739-4030-aea8-2af3185fda11}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>scraper\autoSpotValue.py</StartupFile>
+    <StartupFile>MainDriver\CreateCSVDataFile.py</StartupFile>
     <SearchPath>scraper\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -31,6 +31,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Indicators\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainDriver\CreateCSVDataFile.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainDriver\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="scraper\autoOptionValue.py">
@@ -76,6 +82,7 @@
   <ItemGroup>
     <Folder Include="DBInitialize\" />
     <Folder Include="Indicators\" />
+    <Folder Include="MainDriver\" />
     <Folder Include="scraper\" />
     <Folder Include="scraper\spiders\" />
     <Folder Include="test-module\" />

@@ -20,6 +20,7 @@ class kStockScraperPipeline(object):
     def __init__(self):    
         self.db = MySQLdb.connect(utility.databaseHost, utility.databaseUsername,
 						    utility.databasePassword, utility.databaseName, charset="utf8", use_unicode=True)
+        #db = MySQLdb.connect("localhost", "StockUser", "StockPass", "StockDB", charset="utf8", use_unicode=True)
         log.info("Connected to DB")
         # Cursor will used in executing SQL query
         self.cursor = self.db.cursor()
