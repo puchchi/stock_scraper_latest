@@ -1,7 +1,7 @@
 import sys
 from os import path
 sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
-import panda as pd
+import pandas as pd
 
 class kAccumulationNDistributionLine():
 
@@ -9,7 +9,7 @@ class kAccumulationNDistributionLine():
         #do nothing
         print "In kADL class"
 
-    def calculate(dataFrame):
+    def calculate(self, dataFrame):
         #####  FORMULA #####
         #1. Money Flow Multiplier = [(Close  -  Low) - (High - Close)] /(High - Low) 
         #2. Money Flow Volume = Money Flow Multiplier x Volume for the Period
@@ -21,7 +21,8 @@ class kAccumulationNDistributionLine():
         previousADL = pd.Series(moneyFlowVolume[1:], index = moneyFlowVolume.index)
         
         # We need to fill 0th entry with 0
-        previousADL.fillna(0)
+        previousADL = previousADL.fillna(0)
+
         ADL = previousADL + moneyFlowVolume
 
         return ADL

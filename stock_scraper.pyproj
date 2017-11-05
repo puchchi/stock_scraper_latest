@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{084aa35a-8739-4030-aea8-2af3185fda11}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>MainDriver\CreateCSVDataFile.py</StartupFile>
+    <StartupFile>MainDriver\ComputeIndicators.py</StartupFile>
     <SearchPath>scraper\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -30,7 +30,13 @@
     <Compile Include="Indicators\AccumulationNDistributionLine.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Indicators\OnBalanceVolume.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Indicators\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainDriver\ComputeIndicators.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainDriver\CreateCSVDataFile.py">

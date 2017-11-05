@@ -3,8 +3,6 @@ from os import path
 sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
 sys.path.append( path.dirname( path.abspath(__file__) ) )
 
-
-import panda as pd
 import MySQLdb
 import csv
 from scraper import utility
@@ -25,7 +23,13 @@ class kCreateCSVDataFile():
         cursor = self.db.cursor()  
         cursor.execute(SQL)
         row = cursor.fetchall()
-        with open(filename, 'w') as fp:
+        
+        # adding headers to csv file
+        header = "Date,Open,High,Low,Close,Volume\n"
+        with open(filename, 'wb') as fp:
+            fp.write(header)
+
+        with open(filename, 'ab') as fp:
             a = csv.writer(fp, delimiter=',')
             a.writerows(row)
 
