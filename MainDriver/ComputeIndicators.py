@@ -3,7 +3,7 @@ from os import path
 sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
 
 import pandas as pd
-from Indicators import AccumulationNDistributionLine, OnBalanceVolume
+from Indicators import AccumulationNDistributionLine, OnBalanceVolume, AverageDirectionalIndex
 
 class kComputeIndicators:
     def __init__(self, filename):
@@ -17,19 +17,23 @@ class kComputeIndicators:
         dataframe = self.df
 
         # Calculating ADL
-        adl = AccumulationNDistributionLine.kAccumulationNDistributionLine()
-        adlSeries = adl.calculate(dataframe)
-        adlDataframe = pd.DataFrame(adlSeries, columns=["ADL"])
+        #adl = AccumulationNDistributionLine.kAccumulationNDistributionLine()
+        #adlSeries = adl.calculate(dataframe)
+        #adlDataframe = pd.DataFrame(adlSeries, columns=["ADL"])
         #dataframe.merge(adlDataframe, left_index=True, right_index=True)
 
         # Calculating OBV
-        obv = OnBalanceVolume.kOnBalanceVolume()
-        obvSeries = obv.calculate(dataframe)
-        obvDataframe = pd.DataFrame(obvSeries, columns=["OBV"])
+        #obv = OnBalanceVolume.kOnBalanceVolume()
+        #obvSeries = obv.calculate(dataframe)
+        #obvDataframe = pd.DataFrame(obvSeries, columns=["OBV"])
 
-        dataframe = dataframe.merge(adlDataframe, left_index=True, right_index=True)
-        dataframe = dataframe.merge(obvDataframe, left_index=True, right_index=True)
+        #dataframe = dataframe.merge(adlDataframe, left_index=True, right_index=True)
+        #dataframe = dataframe.merge(obvDataframe, left_index=True, right_index=True)
 
+        # Calculating ADX
+
+        adx = AverageDirectionalIndex.kAverageDirectionalIndex();
+        adxDataframe = adx.calculate(dataframe)
         return dataframe
 
 
