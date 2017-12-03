@@ -33,6 +33,9 @@
     <Compile Include="Indicators\AverageDirectionalIndex.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Indicators\MACD.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Indicators\OnBalanceVolume.py">
       <SubType>Code</SubType>
     </Compile>

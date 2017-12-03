@@ -3,7 +3,7 @@ from os import path
 sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
 
 import pandas as pd
-from Indicators import AccumulationNDistributionLine, OnBalanceVolume, AverageDirectionalIndex
+from Indicators import AccumulationNDistributionLine, OnBalanceVolume, AverageDirectionalIndex, MACD
 
 class kComputeIndicators:
     def __init__(self, filename):
@@ -27,13 +27,19 @@ class kComputeIndicators:
         #obvSeries = obv.calculate(dataframe)
         #obvDataframe = pd.DataFrame(obvSeries, columns=["OBV"])
 
+        # Calculating ADX
+        #adx = AverageDirectionalIndex.kAverageDirectionalIndex();
+        #adxDataframe = adx.calculate(dataframe)
+
+        # Calculating MACD
+        macd = MACD.kMACD();
+        macdDataframe = macd.Calculate(dataframe)
+
         #dataframe = dataframe.merge(adlDataframe, left_index=True, right_index=True)
         #dataframe = dataframe.merge(obvDataframe, left_index=True, right_index=True)
+        #dataframe = dataframe.merge(adxDataframe, left_index=True, right_index=True)
+        dataframe = dataframe.merge(macdDataframe, left_index=True, right_index=True)
 
-        # Calculating ADX
-
-        adx = AverageDirectionalIndex.kAverageDirectionalIndex();
-        adxDataframe = adx.calculate(dataframe)
         return dataframe
 
 
