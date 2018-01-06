@@ -4,16 +4,15 @@ sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
 
 import pandas as pd
 from Indicators import AccumulationNDistributionLine, OnBalanceVolume, AverageDirectionalIndex, MACD, RSI
+from scraper import utility
 
 class kComputeIndicators:
-    def __init__(self, filename):
+    def __init__(self, csvFileName, csvFileNameWithIndicators):
+        self.csvFileNameWithIndicators = csvFileNameWithIndicators
         parser = lambda date: pd.datetime.strptime(date, '%Y%m%d')
-        self.df = pd.read_csv(filename, parse_dates = [0], date_parser = parser, index_col = "Date")
+        self.df = pd.read_csv(csvFileName, parse_dates = [0], date_parser = parser, index_col = "Date")
 
-    def GetDataFrame(self):
-        return self.df
-
-    def CalculateAllIndicators(self):
+    def __call__(self):
         dataframe = self.df
 
         # Calculating ADL
@@ -45,11 +44,10 @@ class kComputeIndicators:
         dataframe = dataframe.merge(macdDataframe, left_index=True, right_index=True)
         dataframe = dataframe.merge(rsiDataframe, left_index=True, right_index=True)
 
-        return dataframe
-
+        dataframe.to_csv(self.csvFileNameWithIndicators)
 
 if __name__ == "__main__":
 
-    computeIndicator = kComputeIndicators("data/nifty.csv")
-    dataframe = computeIndicator.CalculateAllIndicators()
-    dataframe.to_csv("data/niftyWithIndicators.csv")
+    computeIndicator = kComputeIndicators(utility.csvFileName, utility.csvFileNameWithIndicators)
+    dataframe = computeIndicator()
+

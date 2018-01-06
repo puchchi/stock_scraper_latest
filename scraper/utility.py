@@ -2,10 +2,22 @@
 
 import MySQLdb
 
+# data for whole framework
 databaseHost = "localhost"
 databaseName = "StockDB"
 databaseUsername = "StockUser"
 databasePassword = "StockPass"
+
+stockName = "NIFTY BANK"
+dbTableName = "SpotValueOfNiftyBank"
+csvFileName = "data/NiftyBank.csv"
+csvFileNameWithIndicators = "data/NiftyBankWithIndicator.csv"
+startYear = 2010
+endYear = 2018              # expected year + 1
+dbStartDate = 20100101      #yyyymmdd
+dbEndDate = 20171231
+startIndex = 30             # How many rows we need to scrape from csv file
+endIndex = 7                
 
 # this will define lower n upper range of option
 optionRange = 2500
@@ -92,3 +104,7 @@ def getSpotValue(date):
     #closing db connection
     mysql.close()
     return spotValue
+
+
+# Equities spot value url
+# https://www.nseindia.com/products/dynaContent/common/productsSymbolMapping.jsp?symbol=sbin&segmentLink=3&symbolCount=1&series=EQ&dateRange=+&fromDate=01-01-2018&toDate=05-01-2018&dataType=PRICEVOLUMEDELIVERABLE

@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{084aa35a-8739-4030-aea8-2af3185fda11}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>MainDriver\TestingIndicatorData.py</StartupFile>
+    <StartupFile>MainDriver\AddingNewStock.py</StartupFile>
     <SearchPath>scraper\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -45,10 +45,25 @@
     <Compile Include="Indicators\__init__.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainDriver\AddingNewStock.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainDriver\IndicatorTester\ADXIndicatorTesting.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainDriver\ComputeIndicators.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainDriver\CreateCSVDataFile.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainDriver\IndicatorTester\IndicatorTesterClass.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainDriver\IndicatorTester\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainDriver\IndicatorTester\MACDIndicatorTesting.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainDriver\TestingIndicatorData.py">
@@ -57,10 +72,10 @@
     <Compile Include="MainDriver\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="scraper\autoOptionValue.py">
+    <Compile Include="scraper\AutoOptionValue.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="scraper\autoSpotValue.py">
+    <Compile Include="scraper\AutoSpotValue.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="scraper\items.py">
@@ -101,6 +116,7 @@
     <Folder Include="DBInitialize\" />
     <Folder Include="Indicators\" />
     <Folder Include="MainDriver\" />
+    <Folder Include="MainDriver\IndicatorTester\" />
     <Folder Include="scraper\" />
     <Folder Include="scraper\spiders\" />
     <Folder Include="test-module\" />

@@ -59,9 +59,9 @@ class kStockScraperPipeline(object):
         # SpotValueSpider' pipeline
         elif spider.name == 'kSpotValueSpider':
             SQL = """ 
-                INSERT INTO SpotValueOfNifty( Date,Open,High,Low,Close,SharesTraded,Turnover)
+                INSERT INTO %s( Date,Open,High,Low,Close,SharesTraded,Turnover)
                 VALUES (%s,%s,%s,%s,%s,%s,%s)
-            """ % (item['Date'].encode('utf-8'), item['Open'].encode('utf-8'), item['High'].encode('utf-8'),
+            """ % (utility.dbTableName, item['Date'].encode('utf-8'), item['Open'].encode('utf-8'), item['High'].encode('utf-8'),
                    item['Low'].encode('utf-8'), item['Close'].encode('utf-8'), item['SharesTraded'].encode('utf-8'),
                    item['Turnover'].encode('utf-8'))
 

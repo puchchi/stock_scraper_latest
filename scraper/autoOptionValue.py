@@ -19,7 +19,9 @@ log = logging.getLogger(__name__)
 # get_project_stting() will return project setting,which will be set as default setting in crawler
 process = CrawlerProcess(get_project_settings())
     # crawl will take Spider name with its *args
-process.crawl(StockOptionSpider.kStockOptionSpider , symbol='NIFTY 50', startYear=2014, endYear=2015)
+process.crawl(StockOptionSpider.kStockOptionSpider , symbol='NIFTY BANK', startYear=2010, endYear=2017)
         # Everything is set to go and crawl.
 process.start()
 
+# NIFTY 50
+# NIFTY BANK

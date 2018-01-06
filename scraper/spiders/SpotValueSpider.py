@@ -31,6 +31,7 @@ class kSpotValueSpider(scrapy.Spider):
         self.symbol='NIFTY 50'
         #self.start_urls = ["http://www.nseindia.com/products/dynaContent/equities/indices/historicalindices.jsp?indexType={symbol}&fromDate={startDate}&toDate={endDate}".format(symbol=self.symbol, startDate=self.startDate, endDate=self.endDate),
         #             ]
+        # url = https://www.nseindia.com/products/dynaContent/equities/indices/historicalindices.jsp?indexType=NIFTY%20BANK&fromDate=01-Jan-2010&toDate=01-Mar-2010
     
     def start_requests(self):
         scrapy.Spider.start_requests(self)

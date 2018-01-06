@@ -49,5 +49,5 @@ class kTestingIndicatorData:
 if __name__ == "__main__":
 
     testing = kTestingIndicatorData("data/niftyWithIndicatorsOriginal.csv")
-    testing.CompileIndicators(delRows=28, delCols=["Open", "High", "Low", "Volume"], trainingRows=1000, 
+    testing.CompileIndicators(delRows=28, delCols=["Open", "High", "Low", "Volume", "+DI14", "-DI14","Signal Line", "MACD Histogram"], trainingRows=1500, 
                                           trainingDataFName="data/niftyTrainingData.csv", testingDataFName="data/niftyTestingData.csv")
