@@ -11,6 +11,7 @@ import MySQLdb
 from scraper import utility
 from scrapy.exceptions import DropItem
 import logging
+import datetime
 
 # start logger
 log = logging.getLogger(__name__)
@@ -83,6 +84,60 @@ class kStockScraperPipeline(object):
                     print "DB Rollback error"
                     log.critical("DB_ROLLBACK_ERROR")
             return item
+
+        ###########################################################################################    
+        # EquitySpotValueSpider' pipeline
+        elif spider.name == 'kEquitySpotValueSpider':
+            SQL = """ 
+                INSERT INTO %s( Date,Open,High,Low,Close,SharesTraded,Turnover)
+                VALUES (%s,%s,%s,%s,%s,%s,%s)
+            """ % (utility.dbTableName, item['Date'].encode('utf-8'), item['Open'].encode('utf-8'), item['High'].encode('utf-8'),
+                   item['Low'].encode('utf-8'), item['Close'].encode('utf-8'), item['SharesTraded'].encode('utf-8'),
+                   item['Turnover'].encode('utf-8'))
+
+            
+            if item['Date'] in self.ids_seen:
+                log.critical("Duplicate item found for date : %s" % item['Date'])
+                raise DropItem("Duplicate item found: %s" % item)
+            else:
+                # to check for duplicate item
+                self.ids_seen.add(item['Date'])
+                try:
+                    self.cursor.execute(SQL)
+                    # After cursor will execute SQL successfully, DB will commit change
+                    self.db.commit()
+                except:
+                    # In case of error, there will be rollback ...
+                    # If data is already present in table then there will be rollback 
+                    self.db.rollback()
+                    print "DB Rollback error"
+                    log.critical("DB_ROLLBACK_ERROR")
+            return item
+
+        ########################################################################################### 
+        # kOptionValueSpider pipeline
+        if spider.name == 'kOptionValueSpider':
+            expiry = item['Expiry']
+            expiry = expiry.split('-')
+            tableName = utility.dbTableNameOption + expiry[1] + expiry[2]
+            
+            SQL = """
+                INSERT INTO %s (Date , OptionType, StrikePrice , Open , High , Low , Close , NoOfContracts , Turnover , OpenInterest , ChangeInOI)
+                VALUES (%s,'%s',%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            """ % (tableName, item['Date'].encode('utf-8'), item['OptionType'].encode('utf-8'), item['StrikePrice'].encode('utf-8'), item['Open'].encode('utf-8'), item['High'].encode('utf-8'),
+                   item['Low'].encode('utf-8'), item['Close'].encode('utf-8'), item['NoOfContracts'].encode('utf-8'), item['Turnover'].encode('utf-8'), 
+                   item['OpenInterest'].encode('utf-8'), item['ChangeInOI'])
+
+            try:
+                self.cursor.execute(SQL)
+                # After cursor will execute SQL successfully, DB will commit change
+                self.db.commit()
+            except:
+                # In case of error, there will be rollback ...
+                # If data is already present in table then there will be rollback 
+                self.db.rollback()
+                log.critical("DB_ROLLBACK_ERROR")
+            return item    
         return item
     
     def close_spider(self, spider):

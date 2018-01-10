@@ -1,6 +1,7 @@
 # This module contains common function 
 
 import MySQLdb
+import datetime
 
 # data for whole framework
 databaseHost = "localhost"
@@ -8,16 +9,28 @@ databaseName = "StockDB"
 databaseUsername = "StockUser"
 databasePassword = "StockPass"
 
-stockName = "NIFTY BANK"
-dbTableName = "SpotValueOfNiftyBank"
-csvFileName = "data/NiftyBank.csv"
-csvFileNameWithIndicators = "data/NiftyBankWithIndicator.csv"
-startYear = 2010
+stockName = "NIFTY"      # Option symbol of nifty is "NIFTY"
+stockType = "Option"     # Index or equity
+dbTableName = "SpotValueOfNifty"
+dbTableNameOption = "OptionValueOfNifty"    # Final table name will be OptionValueOfNiftyJan2018
+csvFileName = "data/Nifty.csv"
+csvFileNameOption = "data/NiftyOption"            #append .CSV in function
+csvFileNameWithIndicators = "data/NiftyWithIndicator.csv"
+startYear = 2018
 endYear = 2018              # expected year + 1
+endMonth = "Jan"
 dbStartDate = 20100101      #yyyymmdd
 dbEndDate = 20171231
 startIndex = 30             # How many rows we need to scrape from csv file
 endIndex = 7                
+
+# Option Data
+expiries = ["Feb2018", "Mar2018"]       #Standard "Jan2018"
+daysBetweenExpiry = 100                 #Its 90 but we are taking 100 for any boundry cases
+instrumentType = "OPTIDX"               # OPTIDX FUTIDX OPTSTK FUTSTK
+optionCSVFileForTesting = "data/NiftyOptionMar2018.csv"
+dbTableNameByOptionExpiry = "OptionValueOfNiftyFeb2018"
+
 
 # this will define lower n upper range of option
 optionRange = 2500
@@ -46,6 +59,9 @@ indexExpiryDate = {2000:["29-06-2000", "27-07-2000", "31-08-2000", "28-09-2000",
                  2013:["31-01-2013", "28-02-2013", "28-03-2013", "25-04-2013", "30-05-2013", "27-06-2013", "25-07-2013", "29-08-2013", "26-09-2013", "31-10-2013", "28-11-2013", "26-12-2013"],
                  2014:["30-01-2014", "26-02-2014", "27-03-2014", "24-04-2014", "29-05-2014", "26-06-2014", "31-07-2014", "28-08-2014", "25-09-2014", "30-10-2014", "27-11-2014", "24-12-2014"],
                  2015:["29-01-2015", "26-02-2015", "26-03-2015", "30-04-2015", "28-05-2015", "25-06-2015", "30-07-2015", "27-08-2015", "24-09-2015", "29-10-2015", "26-11-2015", "31-12-2015"],
+                 2016:["28-01-2016", "25-02-2016", "31-03-2016", "28-04-2016", "26-05-2016", "30-06-2016", "28-07-2016", "25-08-2016", "29-09-2015", "27-10-2015", "24-11-2016", "29-12-2016"],
+                 2017:["26-01-2017", "23-02-2017", "30-03-2017", "27-04-2017", "25-05-2017", "29-06-2017", "27-07-2017", "31-08-2017", "28-09-2017", "26-10-2017", "30-11-2017", "28-12-2017"],
+                 2018:["25-01-2018", "22-02-2018", "29-03-2018", "26-04-2018", "31-05-2018", "28-06-2018", "26-07-2018", "29-08-2018", "27-09-2018", "25-10-2018", "29-11-2018", "27-12-2018"],
                  }
 
 # This will convert 12-Jan-2014 to 20140112(yyyymmdd)
@@ -54,6 +70,10 @@ def dateEncoding(date):  # This function will convert date(string) to date(integ
     #return unicode(int(words[0] + monthToNumberHash[words[1]] + words[2])) 
     return unicode(int(words[2] + monthToNumberHash[words[1]] + words[0])) 
 
+# From 20140130 to 30-Jan-2014
+def dateDecoding(date):
+    date = datetime.datetime.strptime(str(date), "%Y%m%d")
+    return date.strftime("%d-%b-%Y")
 
 # This will convert '7,500.00' to '7500.00'
 def strToFloatNumber(data):
@@ -91,9 +111,10 @@ def getSpotValue(date):
     mysql = MySQLdb.connect('localhost', 'StockUser', 'StockPass', 'StockDB', charset="utf8", use_unicode=True)
     cursor = mysql.cursor()
     SQL = """
-        select Close from SpotValueOfNifty50 where Date= %s;
-    """
-    cursor.execute(SQL, (date))
+        select Close from %s where Date= %s;
+    """ % (dbTableName, str(date).encode('utf-8'))
+    print SQL
+    cursor.execute(SQL)
     #This will check no of rows in output of query
     rowCount=cursor.rowcount
     if rowCount==0:
@@ -108,3 +129,6 @@ def getSpotValue(date):
 
 # Equities spot value url
 # https://www.nseindia.com/products/dynaContent/common/productsSymbolMapping.jsp?symbol=sbin&segmentLink=3&symbolCount=1&series=EQ&dateRange=+&fromDate=01-01-2018&toDate=05-01-2018&dataType=PRICEVOLUMEDELIVERABLE
+
+# NIFTY 50 ->SpotValueOfNifty
+# Nifty Bank->SpotValueOfNiftyBank

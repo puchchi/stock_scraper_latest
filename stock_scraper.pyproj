@@ -6,7 +6,6 @@
     <ProjectGuid>{084aa35a-8739-4030-aea8-2af3185fda11}</ProjectGuid>
     <ProjectHome />
     <StartupFile>MainDriver\AddingNewStock.py</StartupFile>
-    <SearchPath>scraper\</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
@@ -48,13 +47,19 @@
     <Compile Include="MainDriver\AddingNewStock.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainDriver\CSVCreator\CreateOptionCSVDataFile.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainDriver\CSVCreator\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainDriver\IndicatorTester\ADXIndicatorTesting.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainDriver\ComputeIndicators.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainDriver\CreateCSVDataFile.py">
+    <Compile Include="MainDriver\CSVCreator\CreateSpotCSVDataFile.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainDriver\IndicatorTester\IndicatorTesterClass.py">
@@ -66,16 +71,22 @@
     <Compile Include="MainDriver\IndicatorTester\MACDIndicatorTesting.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="MainDriver\OptionRelatedTesting.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MainDriver\TestingIndicatorData.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MainDriver\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="scraper\AutoOptionValue.py">
+    <Compile Include="scraper\AutoEquitySpotValue.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="scraper\AutoSpotValue.py">
+    <Compile Include="scraper\AutoIndexSpotValue.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\AutoOptionValue.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="scraper\items.py">
@@ -85,6 +96,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="scraper\settings.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\spiders\EquitySpotValueSpider.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="scraper\spiders\OptionValueSpider.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="scraper\spiders\SpotValueSpider.py">
@@ -116,10 +133,15 @@
     <Folder Include="DBInitialize\" />
     <Folder Include="Indicators\" />
     <Folder Include="MainDriver\" />
+    <Folder Include="MainDriver\CSVCreator\" />
     <Folder Include="MainDriver\IndicatorTester\" />
     <Folder Include="scraper\" />
     <Folder Include="scraper\spiders\" />
     <Folder Include="test-module\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OIGraph - Copy.html" />
+    <Content Include="OIGraph.html" />
   </ItemGroup>
   <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />

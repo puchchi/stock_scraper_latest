@@ -1,3 +1,5 @@
+# Obsolete
+# Use it for year wise data only
 import sys
 from os import path
 sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
@@ -44,6 +46,7 @@ class kStockOptionSpider(scrapy.Spider):
                 toDate = expiryDate                
                 # this will convert "12-02-2014" to 12022014 to get spot value of NIFTY from database
                 expiryDate = int(expiryDate.replace('-', ''))
+                #expiryDate = utility.dateEncoding(expiryDate)
                 # this will get Spot value of NIFTY for that day
                 while True:                
                     spotValue = utility.getSpotValue(expiryDate)

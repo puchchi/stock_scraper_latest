@@ -7,11 +7,14 @@
 import sys
 from os import path
 sys.path.append( path.dirname( path.dirname( path.abspath(__file__) ) ) )
+
+import datetime
 import scrapy, logging, scraper
 from scrapy.loader import ItemLoader
 from scrapy.selector import Selector
 from scrapy.loader.processors import Join, MapCompose
 from scraper.items import StockSpotItem
+from scraper import utility
 
 # start logger
 log = logging.getLogger(__name__)
@@ -28,7 +31,6 @@ class kSpotValueSpider(scrapy.Spider):
         self.dayMonthRange=[[['01','31'],['01','03']],[['01','30'],['04','06']],[['01','30'],['07','09']],[['01','31'],['10','12']]]
         self.year=startYear  #This will be start year
         self.currentYear=endYear
-        self.symbol='NIFTY 50'
         #self.start_urls = ["http://www.nseindia.com/products/dynaContent/equities/indices/historicalindices.jsp?indexType={symbol}&fromDate={startDate}&toDate={endDate}".format(symbol=self.symbol, startDate=self.startDate, endDate=self.endDate),
         #             ]
         # url = https://www.nseindia.com/products/dynaContent/equities/indices/historicalindices.jsp?indexType=NIFTY%20BANK&fromDate=01-Jan-2010&toDate=01-Mar-2010
@@ -37,10 +39,13 @@ class kSpotValueSpider(scrapy.Spider):
         scrapy.Spider.start_requests(self)
         log.info("Creating Start_url list: ")
         iterobj=0
-        while self.year<self.currentYear:
-            for self.dayIter in self.dayMonthRange:
-                self.startDate=self.dayIter[0][0]+'-'+self.dayIter[1][0]+'-'+str(self.year)
-                self.endDate=self.dayIter[0][1]+'-'+self.dayIter[1][1]+'-'+str(self.year)
+        endMonth = datetime.datetime.strptime(utility.endMonth, "%b").month
+        while self.year<=self.currentYear:
+            for dayIter in self.dayMonthRange:
+                if endMonth < int(dayIter[1][0]):
+                    return
+                self.startDate=dayIter[0][0]+'-'+dayIter[1][0]+'-'+str(self.year)
+                self.endDate=dayIter[0][1]+'-'+dayIter[1][1]+'-'+str(self.year)
                 iterobj+=1
                 url="http://www.nseindia.com/products/dynaContent/equities/indices/historicalindices.jsp?indexType={symbol}&fromDate={startDate}&toDate={endDate}".format(symbol=self.symbol, startDate=self.startDate, endDate=self.endDate)
                 log.info('%s : %s '%(iterobj,url))

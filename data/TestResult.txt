@@ -1,0 +1,47 @@
+================================================================= NIFTY 50 =================================================
+====== Test result b/w MACD line & centerline ======
+Total buy pass : 24
+Total buy fail : 6
+Total buy pass percentage in nxt 3 days : 80.0
+Total buy pass from high: 29
+Total buy fail from high: 1
+Total buy pass percentage from high in nxt 3 days : 96.6666666667
+====================================
+Total sell pass : 21
+Total sell fail : 8
+Total sell pass percentage in nxt 3 days : 72.4137931034
+Total sell pass from low: 24
+Total sell fail from low: 5
+Total sell pass percentage from low in nxt 3 days : 82.7586206897
+
+
+====== Test result b/w MACD line & Signal line =====
+Total buy pass : 57
+Total buy fail : 20
+Total buy pass percentage in nxt 3 days : 74.025974026
+Total buy pass from high: 75
+Total buy fail from high: 2
+Total buy pass percentage from high in nxt 3 days : 97.4025974026
+====================================
+Total sell pass : 55
+Total sell fail : 22
+Total sell pass percentage in nxt 3 days : 71.4285714286
+Total sell pass from low: 70
+Total sell fail from low: 7
+Total sell pass percentage from low in nxt 3 days : 90.9090909091
+
+
+====== Test result b/w +DI14 & -DI14 having ADX>20 ======
+Total buy pass : 37
+Total buy fail : 5
+Total buy pass percentage in nxt 3 days : 88.0952380952
+Total buy pass from high: 41
+Total buy fail from high: 1
+Total buy pass percentage from high in nxt 3 days : 97.619047619
+====================================
+Total sell pass : 25
+Total sell fail : 17
+Total sell pass percentage in nxt 3 days : 59.5238095238
+Total sell pass from low: 34
+Total sell fail from low: 8
+Total sell pass percentage from low in nxt 3 days : 80.9523809524

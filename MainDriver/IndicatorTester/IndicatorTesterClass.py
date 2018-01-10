@@ -26,7 +26,7 @@ class kIndicatorTesterClass:
     def sellSignal(self, index):
         minClose = min(self.df["Close"][index+1:index+self.noOfDays+1])
         minLow = min(self.df["Low"][index+1:index+self.noOfDays+1])
-        #print "--------------Sell Signal : " + str(self.df.index[index]) + " Current Close : " + str(self.df["Close"][index]) + " Lows in nxt " + str(self.noOfDays) + " days : " + str(self.df["Low"][index:index+self.noOfDays+1])
+        print "--------------Sell Signal : " + str(self.df.index[index]) + " Current Close : " + str(self.df["Close"][index]) + " Lows in nxt " + str(self.noOfDays) + " days : " + str(self.df["Low"][index:index+self.noOfDays+1])
                     
         if minClose < self.df["Close"][index]:
             self.totSPass = self.totSPass + 1
@@ -57,7 +57,7 @@ class kIndicatorTesterClass:
     def buySignal(self, index):
         maxClose = max(self.df["Close"][index+1:index+self.noOfDays+1])
         maxHigh = max(self.df["High"][index+1:index+self.noOfDays+1])
-        #print "++++++++++++++Buy Signal : " + str(self.df.index[index]) + " Current Close : " + str(self.df["Close"][index]) + " Highs in nxt " + str(self.noOfDays) + " days : " + str(self.df["High"][index:index+self.noOfDays+1])
+        print "++++++++++++++Buy Signal : " + str(self.df.index[index]) + " Current Close : " + str(self.df["Close"][index]) + " Highs in nxt " + str(self.noOfDays) + " days : " + str(self.df["High"][index:index+self.noOfDays+1])
                     
         if maxClose > self.df["Close"][index]:
             self.totBPass = self.totBPass + 1

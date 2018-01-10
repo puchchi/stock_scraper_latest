@@ -64,4 +64,78 @@ class StockSpotItem(Item):
     Close = Field()
     SharesTraded = Field()
     Turnover = Field()  # In lacks
+
+class kEquitySpotItem(Item):
+    Date = Field(
+                 input_processor=MapCompose(utility.dateEncoding),
+                 output_processor=Join(),
+                 )  
+    Open = Field(
+                 input_processor=MapCompose(utility.strToFloatNumber),
+                 output_processor=Join(),
+                 )# '7,500.00' to '7500.00'
+    High = Field(
+                 input_processor=MapCompose(utility.strToFloatNumber),
+                 output_processor=Join(),
+                 )# '7,500.00' to '7500.00'
+    Low = Field(
+                 input_processor=MapCompose(utility.strToFloatNumber),
+                 output_processor=Join(),
+                 )# '7,500.00' to '7500.00'
+    Close = Field(
+                 input_processor=MapCompose(utility.strToFloatNumber),
+                 output_processor=Join(),
+                 )# '7,500.00' to '7500.00'
+    SharesTraded = Field(
+                 input_processor=MapCompose(utility.strToFloatNumber),
+                 output_processor=Join(),
+                 )# '7,500.00' to '7500.00'
+    Turnover = Field(
+                 input_processor=MapCompose(utility.strToFloatNumber),
+                 output_processor=Join(),
+                 )# '7,500.00' to '7500.00'  # In lacks
     
+class kOptionValueItem(Item):
+    # This class will contains Option(Call/Put) values only
+    Date = Field(
+                 input_processor=MapCompose(utility.dateEncoding),
+                 output_processor=Join(),
+                 )  # DDMMYYYY
+    Expiry = Field()
+    OptionType = Field()
+    StrikePrice = Field(  
+                input_processor=MapCompose(utility.strToFloatNumber),
+                 output_processor=Join(),
+                 )# '7,500.00' to '7500.00'
+    Open = Field(
+                 input_processor=MapCompose(utility.strToFloatNumber),
+                 output_processor=Join(),
+                 )# '7,500.00' to '7500.00'
+    High = Field(
+                 input_processor=MapCompose(utility.strToFloatNumber),
+                 output_processor=Join(),
+                 )# '7,500.00' to '7500.00'
+    Low = Field(
+                input_processor=MapCompose(utility.strToFloatNumber),
+                output_processor=Join(),
+                )# '7,500.00' to '7500.00'
+    Close = Field(
+                  input_processor=MapCompose(utility.strToFloatNumber),
+                  output_processor=Join(),
+                  )# '7,500.00' to '7500.00'
+    NoOfContracts = Field(
+                          input_processor=MapCompose(utility.strToIntNumber),
+                          output_processor=Join(),
+                          )# '7,500.00' to '7500'
+    Turnover = Field(
+                     input_processor=MapCompose(utility.strToFloatNumber),
+                     output_processor=Join(),
+                     )  # '7,500.00' to '7500.00'# In lacks
+    OpenInterest = Field(
+                         input_processor=MapCompose(utility.strToIntNumber),
+                         output_processor=Join(),
+                         )# '7,500.00' to '7500'
+    ChangeInOI = Field(
+                       input_processor=MapCompose(utility.strToIntNumber),
+                       output_processor=Join(),
+                       )# '7,500.00' to '7500'
